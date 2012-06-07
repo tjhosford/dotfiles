@@ -1,0 +1,67 @@
+# ruby/rails
+alias tf="ruby_test functional"
+alias tu="ruby_test unit"
+alias bes="bundle exec rspec"
+alias bec='CUCUMBER_FORMAT=pretty be script/cucumber -b'
+alias ber="bundle exec rake"
+alias be="bundle exec"
+alias stage="RAILS_ENV=staging bundle exec foreman start"
+alias stage_debug="RAILS_ENV=staging bundle exec script/rails s -p 3000 --debugger"
+alias gbrt="gbrt.rb"
+alias gr="grep -R"
+alias sc="be script/spork cucumber"
+alias sr="be script/spork rspec"
+alias nc="npm run-script cucumber"
+alias ns="npm run-script spec"
+
+function build() {
+ if [[ $1 != "" ]]; then
+   git push -f origin $1 && git push -f builder $1
+ else
+   echo "error"
+ fi
+}
+
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+# git
+alias g="git"
+alias gbr="git remote prune origin && git branch -r"
+alias gco="git checkout"
+alias gcom="git checkout master"
+alias gs="git status"
+alias gd="git diff"
+alias gl="git log"
+alias gac="git add . && git commit -am"
+alias gbd="git branch -D"
+alias gpo="git push origin"
+alias gpb="git push builder"
+alias grs="git reset --soft HEAD\^"
+alias grh="git reset --hard HEAD"
+alias gca="git commit --amend"
+alias glol="git log --pretty=oneline --abbrev-commit --graph --decorate"
+alias gp="git pull"
+alias gri="git rebase -i"
+alias gm="git merge"
+
+# filesystem
+alias ..="cd ../"
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias o=$EDITOR
+alias dotf="cd $HOME/.dotfiles"
+
+# services
+alias nick="mplayer ~/Music/Theme\ Music/528491.wav > /dev/null 2>&1"
+
+# misc.
+alias timestamp="date +%Y%m%d%H%M%S"
+
+alias cci="git push git@github.com:crowdtap/crowdtap-builder.git"
+
+function clean() {
+  grb rm $1
+  cci :$1
+}
