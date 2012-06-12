@@ -13,6 +13,8 @@ alias sc="be script/spork cucumber"
 alias sr="be script/spork rspec"
 alias nc="npm run-script cucumber"
 alias ns="npm run-script spec"
+alias ncu="./node_modules/.bin/cucumber.js"
+alias ncw="./node_modules/.bin/cucumber.js --tag @wip"
 
 function build() {
  if [[ $1 != "" ]]; then
