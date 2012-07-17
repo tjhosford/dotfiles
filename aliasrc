@@ -6,7 +6,9 @@ alias bec='CUCUMBER_FORMAT=pretty be script/cucumber -b'
 alias ber="bundle exec rake"
 alias be="bundle exec"
 alias stage="RAILS_ENV=staging bundle exec foreman start"
+alias bef="bundle exec foreman start"
 alias stage_debug="RAILS_ENV=staging bundle exec script/rails s -p 3000 --debugger"
+alias debug="bundle exec script/rails s -p 3000 --debugger"
 alias gbrt="gbrt.rb"
 alias gr="grep -R"
 alias sc="be script/spork cucumber"
@@ -15,6 +17,10 @@ alias nc="npm run-script cucumber"
 alias ns="npm run-script spec"
 alias ncu="./node_modules/.bin/cucumber.js"
 alias ncw="./node_modules/.bin/cucumber.js --tag @wip"
+alias ncwd="node debug ./node_modules/.bin/cucumber.js --tag @wip"
+alias nsd="node debug ./node_modules/.bin/jasmine-node"
+alias cs="coffee server.coffee"
+alias pryy="pry -r ./config/environment"
 
 function build() {
  if [[ $1 != "" ]]; then
@@ -36,7 +42,7 @@ alias gcom="git checkout master"
 alias gs="git status"
 alias gd="git diff"
 alias gl="git log"
-alias gac="git add . && git commit -am"
+alias gcam="git add . && git commit -am"
 alias gbd="git branch -D"
 alias gpo="git push origin"
 alias gpb="git push builder"
@@ -64,6 +70,7 @@ alias timestamp="date +%Y%m%d%H%M%S"
 alias cci="git push git@github.com:crowdtap/crowdtap-builder.git"
 
 function clean() {
-  grb rm $1
-  cci :$1
+  git branch -D $1
+  git push origin :$1
+  git push builder :$1
 }
