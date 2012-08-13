@@ -10,12 +10,17 @@ call pathogen#helptags()
 syntax on
 filetype plugin indent on
 
-colorscheme molokai
+" For solarized
+let g:solarized_termcolors=256
+let g:solarized_contrast= "high"
+let g:solarized_visibility= "high"
+set background=dark
+colorscheme solarized
 
-if $TERM =~ '256color'
-  set t_Co=256
-elseif $TERM =~ '^xterm$'
-  set t_Co=256
+if $term =~ '256color'
+  set t_co=256
+elseif $term =~ '^xterm$'
+  set t_co=256
 endif
 
 set cursorline
@@ -98,7 +103,7 @@ let g:Powerline_symbols = 'unicode'
 "
 " Quickfixsigns
 "
-let g:quickfixsigns_classes=['qfl', 'vcsdiff', 'breakpoints']
+le g:quickfixsigns_classes=['qfl', 'vcsdiff', 'breakpoints']
 
 
 "
